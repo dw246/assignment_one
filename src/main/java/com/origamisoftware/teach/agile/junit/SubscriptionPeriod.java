@@ -40,20 +40,33 @@ public class SubscriptionPeriod {
     }
 
     /**
-     * @return the total Days in the subscription
+     * @return the total Days in the subscription, to start 0
      */
     public int getTotalDays() {
-        // todo implement method
-        return 0;
+        /** todo implement method */
+        long end = endDate.getTime();
+        long start = startDate.getTime();
+        long diff = Math.abs(endDate.getTime() - startDate.getTime());
+        diff = diff / 1000;
+        diff = diff / 86400;
+     int tmptotalDays = (int) diff;
+        return tmptotalDays;
     }
 
     /**
      * @return the total months on the subscription
      */
     public int getTotalMonths() {
-        // todo implement method
+        /** todo implement method */
+        long end = endDate.getTime();
+        long start = startDate.getTime();
+        long diff = Math.abs(endDate.getTime() - startDate.getTime());
+        diff = diff/1000;
+        diff = diff/86400;
+        diff = diff/30;
+        int tmpTotalMonths = (int) diff;
 
-        return 0;
+        return tmpTotalMonths;
     }
 
     /**
@@ -65,8 +78,11 @@ public class SubscriptionPeriod {
      * subscription period or false otherwise.
      */
     public boolean hasExpired(Date date) {
-        // todo implement method
-        throw new NotImplementedException();
+        /** todo implement method */
+       /**  throw new NotImplementedException(); */
+
+       boolean has_Expired =  endDate.after(date);
+        return has_Expired;
     }
 
 }

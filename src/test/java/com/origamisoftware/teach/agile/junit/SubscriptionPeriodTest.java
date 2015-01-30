@@ -50,7 +50,9 @@ public class SubscriptionPeriodTest {
     @Test
     public void testTotalDays() {
         SubscriptionPeriod subscriptionPeriod = new SubscriptionPeriod(now.getTime(), sixthMonthsFromNow.getTime());
-        int totalDays = subscriptionPeriod.getTotalDays();
+     /**   int totalDays = subscriptionPeriod.getTotalDays(); type mismatch 
+      */
+        long totalDays = (long) subscriptionPeriod.getTotalDays();
         long differenceInDays = (sixthMonthsFromNow.getTime().getTime() - now.getTime().getTime()) / (1000 * 60 * 60 * 24);
         assertEquals(totalDays, differenceInDays);
     }
@@ -71,8 +73,14 @@ public class SubscriptionPeriodTest {
      *  TODO fix this test
      */
     @Test
-    public void testHashExpired() {
-        fail("This test needs to written!.");
+    public void testHasExpired() {
+       /**  fail("This test needs to written!."); */
+        SubscriptionPeriod subscriptionPeriod = new SubscriptionPeriod(now.getTime(), sixthMonthsFromNow.getTime());
+
+        boolean has_it_Expired = subscriptionPeriod.hasExpired(now.getTime());
+        boolean expired = true;
+
+        assertEquals(expired,  has_it_Expired);
     }
 
 
